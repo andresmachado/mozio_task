@@ -1,1 +1,1 @@
-web: gunicorn django_imoveis.wsgi
+web: gunicorn mozio.wsgi
