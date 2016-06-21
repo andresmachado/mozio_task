@@ -52,6 +52,7 @@ coverage.xml
 # Django stuff:
 *.log
 local_settings.py
+/static/
 
 # Flask stuff:
 instance/
@@ -60,7 +61,8 @@ instance/
 # Scrapy stuff:
 .scrapy
 
-# Sphinx documentation
+# Sphinx documentation[Errno 13] Permission denied: '/static'
+
 docs/_build/
 
 # PyBuilder

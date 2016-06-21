@@ -26,9 +26,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '26i7004#xx@q%b3lcwdwbi!fjw8rm$3p#h2ci-e!-^=z0i%g##'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = [".herokuapp.com"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -82,12 +82,13 @@ WSGI_APPLICATION = 'mozio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-urllib.parse.uses_netloc.append("postgres")
+urllib.parse.uses_netloc.append("postgis")
 url = urllib.parse.urlparse(os.environ["DATABASE_URL"])
 
 DATABASES = {
     'default': dj_database_url.config(default=os.environ["DATABASE_URL"])
 }
+DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 
 conn = psycopg2.connect(
     database=url.path[1:],
@@ -96,14 +97,6 @@ conn = psycopg2.connect(
     host=url.hostname,
     port=url.port
 )
-
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-#         'NAME': 'mozio',
-#     }
-# }
 
 
 # Password validation
@@ -156,4 +149,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
