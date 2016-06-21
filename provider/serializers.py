@@ -17,8 +17,8 @@ class ProviderSerializer(serializers.ModelSerializer):
 
 
 class PolygonSerializer(serializers.ModelSerializer):
-    provider = serializers.ReadOnlyField(source='provider.name')
+    provider_name = serializers.ReadOnlyField(source='provider.name')
 
     class Meta:
         model = Polygon
-        fields = ('provider', 'name', 'price', 'poly')
+        fields = ('provider', 'provider_name', 'name', 'price', 'poly')
