@@ -130,6 +130,10 @@ REST_FRAMEWORK = {
     ),
 }
 
+# PostGIS settings path
+
+GEOS_LIBRARY_PATH = os.environ.get('GEOS_LIBRARY_PATH')
+GDAL_LIBRARY_PATH = os.environ.get('GDAL_LIBRARY_PATH')
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
