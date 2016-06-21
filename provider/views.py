@@ -18,7 +18,7 @@ class PolygonViewSet(viewsets.ModelViewSet):
     """
     serializer_class = PolygonSerializer
 
-    def perform_create(self):
+    def perform_create(self, serializer):
         serializer.save(provider=self.request.user)
 
     def get_queryset(self):
