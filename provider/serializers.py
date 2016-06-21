@@ -21,4 +21,4 @@ class PolygonSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Polygon
-        fields = ('provider', 'name', 'price')
+        fields = ('provider', 'name', 'price', 'poly')
