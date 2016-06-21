@@ -85,6 +85,13 @@ WSGI_APPLICATION = 'mozio.wsgi.application'
 urllib.parse.uses_netloc.append("postgis")
 url = urllib.parse.urlparse(os.environ["DATABASE_URL"])
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.contrib.gis.db.backends.postgis',
+#         'NAME': 'mozio',
+#     }
+# }
+
 DATABASES = {
     'default': dj_database_url.config(default=os.environ["DATABASE_URL"])
 }
@@ -126,7 +133,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication'
     ),
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ),
 }
 

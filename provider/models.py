@@ -1,7 +1,9 @@
+from django.contrib.auth.models import User
 from django.contrib.gis.db import models
 
 
 class Provider(models.Model):
+    user = models.ForeignKey(User, related_name='provider')
     name = models.CharField(max_length=150)
     email = models.CharField(max_length=150)
     phone_number = models.CharField(max_length=20)

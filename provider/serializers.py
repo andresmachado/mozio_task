@@ -4,10 +4,14 @@ from .models import Polygon, Provider
 
 
 class ProviderSerializer(serializers.ModelSerializer):
+    username = serializers.ReadOnlyField(source='user.username')
+
     class Meta:
         model = Provider
         fields = (
             'id',
+            'username',
+            'user',
             'name',
             'email',
             'phone_number',

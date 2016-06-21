@@ -1,6 +1,7 @@
-from rest_framework import viewsets
+from rest_framework import permissions, viewsets
 
 from .models import Polygon, Provider
+from .permissions import IsOwnerOrReadOnly
 from .serializers import PolygonSerializer, ProviderSerializer
 
 
@@ -8,6 +9,9 @@ class ProviderViewSet(viewsets.ModelViewSet):
     """API for retrieve, create, update or delete Providers."""
     serializer_class = ProviderSerializer
     queryset = Provider.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 
 class PolygonViewSet(viewsets.ModelViewSet):
